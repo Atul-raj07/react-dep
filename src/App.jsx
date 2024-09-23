@@ -1,16 +1,39 @@
-import React from 'react'
+import React from 'react';
 
-let a = "5";
+let b = [
+  {
+    name: 'a',
+    age: 10,
+    gender: 'male',
+  },
+  {
+    name: 'b',
+    age: 20,
+    gender: 'female',
+  },
+  {
+    name: 'c',
+    age: 30,
+    gender: 'male',
+  },
+];
 
+let data = b.map((item,i) =>{
+  return (
+    <div key={i}>
+  <h1 className='text-4xl'>{item.name}</h1>
+  <h4>{item.age}</h4>
+  <p>{item.gender}</p>
+  </div>
+  )
+} );
+console.log(data);
 const App = () => {
   return (
     <>
-      <h1 className='text-5xl text-red-500'>This is a react App testing</h1>
-      <br />
-      <h2> {import.meta.env.VITE_API_KEY }</h2>
-      
+      <div>{data}</div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
