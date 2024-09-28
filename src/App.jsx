@@ -1,22 +1,43 @@
-  import React, { useState } from 'react'
+import React, { useState } from 'react'
 
-  const App = () => {
-    const [data, setdata] = useState('')
-      console.log(data)
-      
-      const formHandler = (e)=>{
-      e.preventDefault()
-      e.target.reset()
-    }
-    return (
-      <div>
+const App = () => {
 
-  <form onSubmit={formHandler} >
-    <input onChange={(e)=>{setdata(e.target.value)}} value={data}  type="text" name="firstname" placeholder='firstname' className='px-4 py-1 text-zinc-900 rounded-lg bg-zinc-200 m-5' />
-    <button  className='px-6 py-2 rounded-lg bg-blue-600 m-5'>Submit</button>
-  </form>
-      </div>
-    )
+  const [username, setusername] = useState("")
+  const [message, setmessage] = useState('')
+  const inputHandler =(e) => {
+    e.target.value.length >= 5 ? setmessage("is big") :setmessage( "is small")
+    setusername(e.target.value)
+  }
+  const submitHandler = (e) =>{
+    e.preventDefault()
   }
 
-  export default App
+  return (
+    <>
+    <form onSubmit={submitHandler} >
+        <div className="mb-4">
+          <input
+          onInput={inputHandler}
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            placeholder="username"
+            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+        </div>
+        <p>{message}</p>
+        <div className="flex items-center justify-between">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </>
+  )
+}
+
+export default App
