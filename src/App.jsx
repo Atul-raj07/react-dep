@@ -1,41 +1,32 @@
-import React, { useState } from 'react'
-
+import React from 'react'
+import {useForm} from 'react-hook-form'
 const App = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
 
-  const [username, setusername] = useState("")
-  const [message, setmessage] = useState('')
-  const inputHandler =(e) => {
-    e.target.value.length >= 5 ? setmessage("is big") :setmessage( "is small")
-    setusername(e.target.value)
+  const onSubmit = (e) => {
+    console.log(e)
   }
-  const submitHandler = (e) =>{
-    e.preventDefault()
-  }
+if(errors.username){
+
+  console.log(errors.username.message);
+}
+
+  
 
   return (
     <>
-    <form onSubmit={submitHandler} >
-        <div className="mb-4">
-          <input
-          onInput={inputHandler}
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            placeholder="username"
-            className="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-        <p>{message}</p>
-        <div className="flex items-center justify-between">
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+    <form onSubmit = {handleSubmit(onSubmit)}>
+      <input {...register("username",{required : "username is reuired"})} className='text-black'  type="text" />
+      <br />
+      {errors.username && <p className='text-red-700' role='alert'>{errors.username.message}</p>}
+      <br />
+      <input className='px-4 py-2 bg-blue-700 text-white' type="submit" value="submit" />
+    </form>
     </>
   )
 }
