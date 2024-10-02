@@ -2,10 +2,8 @@ import React from 'react'
 
 const Child = (props) => {
     const { children} = props
-    console.log(children);
-    
   return (
-    <div>Child {children}</div>
+    <div className='px-4 py-6 bg-zinc-200 text-black'>{children}</div>
   )
 }
 

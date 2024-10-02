@@ -5,15 +5,11 @@ import Child from './components/Child'
 
 const App = () => {
   return (
-    <>
-    <Nav title ="NavBar lololo" />
-    <Header title ="Header lololo" />
     <Child>
-      <h1>hello child </h1>
-      <p>dfnhdijkfjmk</p>
-      <button>explore</button>
+    {/* <Nav title ="NavBar lololo" />
+    <Header title ="Header lololo" /> */}
+    <h1>dfnvjdfo</h1>
     </Child>
-    </>
   )
 }
 
